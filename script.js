@@ -8,19 +8,29 @@ const goods = [
   { title: "Underwear", price: 150, src: "img/underwear.png" },
 ];
 
-const renderGoodsItem = (title, price, src) => {
-  return `<div class="goods_item"><h3>${title}</h3><p>${price}</p><img src=${src} alt="image"><button class="goods_btn add_btn">Добавить</button><button class="goods_btn del_btn">Удалить</button></div>`;
+const renderGoodsItem = (title  = 'name', price = 'price', src ='Pic') => {
+  return `<div class="goods_item"><h3>${title}</h3><p class='wear_price'>${price}</p><button class="goods_btn add_btn">Добавить</button><button class="goods_btn del_btn">Удалить</button></div>`;
 };
 
 const renderGoodsList = (list) => {
   let goodsList = list.map((item) =>
-    renderGoodsItem(item.title, item.price, item.src)
+    renderGoodsItem(item.title, item.price , item.src)
   );
   document.querySelector(".goods_list").innerHTML = goodsList.join(" ");
+
 };
 
 renderGoodsList(goods);
 
-// document.querySelector(".goods_item").onclick = () => {
-//   document.querySelector(".goods_item").classList.add("active");
-// };
+let goodsItem = document.querySelectorAll('.wear_price'); // Добавлене контейнера с изображением
+for(let i =0; i < goods.length; i++) {
+  goodsItem[i].insertAdjacentHTML('beforebegin','<div class="image_container"></div>');
+};
+
+let imageContainer = document.querySelectorAll('.image_container'); // Добавлене  изображения в контейнер 
+for(let i =0; i < goods.length; i++) {
+  imageContainer[i].style.backgroundImage = `url(${goods[i].src})`;
+};
+
+
+
