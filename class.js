@@ -45,6 +45,16 @@ class GoodsList {
     }
 }
 
+// class AddCart {
+//     constructor () {
+//         this.cartGood = {}
+//     }
+//     getItem() {
+//         let addBtn = document.querySelectorAll('.add_btn');
+        
+        
+//     }
+// }
 
 class DeleteFromCart {
 

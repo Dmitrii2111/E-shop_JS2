@@ -83,7 +83,7 @@ footer {
 
 }
 .active {
-    border: 2px solid blue;
+    background-color: violet;
 }
 
 .goods_btn {
