@@ -5,7 +5,7 @@ class GoodsItem {
         this.src = src;
     }
     render() {
-        return `<div class="goods_item"><h3>${this.title}</h3><div class="image_container" style="background-image: url(${this.src})"></div><p class='wear_price'>${this.price}</p><button class="goods_btn add_btn">Добавить</button><button class="goods_btn del_btn">Удалить</button></div>`;
+        return `<div class="goods_item"><h3>${this.title}</h3><div class="image_container" style="background-image: url(${this.src})"></div><p class='wear_price'>${this.price}</p><button data-action="add" class="goods_btn add_btn">Добавить</button><button data-action="delete" class="goods_btn del_btn">Удалить</button></div>`;
     }
     getPrice() {
         return this.price;
@@ -45,21 +45,21 @@ class GoodsList {
     }
 }
 
-// class AddCart {
-//     constructor () {
-//         this.cartGood = {}
-//     }
-//     getItem() {
-//         let addBtn = document.querySelectorAll('.add_btn');
-        
-        
-//     }
-// }
-
-class DeleteFromCart {
-
-}
-
-class Checkout {
-    
+class CartActions {
+    constructor(elem) {
+        this.elem = elem;
+        elem.onclick = this.onClick.bind(this);
+    }
+    add() {
+        console.log(this.elem);
+    }
+    delete() {
+        console.log('delete');
+    }
+    onClick(event) {
+        let action = event.target.dataset.action;
+        if (action) {
+            this[action]();
+        }
+    }
 }
